@@ -1,0 +1,35 @@
+{
+  "name": "onecx-common-e2e",
+  "version": "0.0.1",
+  "description": "Shared Playwright page objects, components, and helpers",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "@playwright/test": "^1.64.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "allure-js-commons": "^3.14.0",
+    "axe-core": "^4.14.0"
+  }
+}
