@@ -1,6 +1,6 @@
 {
   "name": "onecx-common-e2e",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Shared Playwright page objects, components, and helpers",
   "type": "commonjs",
   "main": "./dist/index.js",
@@ -18,13 +18,19 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test verification/fixtures-errors.test.cjs && playwright test",
+    "report:generate": "allure generate allure-results --clean -o allure-report",
+    "report:open": "allure open allure-report",
     "prepack": "npm run build"
   },
   "peerDependencies": {
     "@playwright/test": "^1.64.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.65.0",
+    "@playwright/test": "1.64.0",
+    "allure-commandline": "2.46.1",
+    "allure-playwright": "3.14.0",
+    "playwright-core": "1.64.0",
     "typescript": "^7.0.2"
   },
   "dependencies": {

@@ -9,3 +9,5 @@ node_modules/
 
 dist/
 *.tgz
+allure-results/
+allure-report/

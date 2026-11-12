@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { resolve } from 'node:path';
 
 /**
  * Read environment variables from file.
@@ -12,7 +13,8 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './verification',
+  testMatch: 'fixtures.spec.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -22,7 +24,11 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['line'],
+    ['html', { open: 'never' }],
+    ['allure-playwright', { resultsDir: resolve(__dirname, 'allure-results') }],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
